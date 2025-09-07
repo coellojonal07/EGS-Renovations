@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EGS Renovations - Transformamos tu Hogar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Degradado de fuego para el texto del logo */
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent; /* Para navegadores que no soportan el degradado */
+        }
+        
+        .nav-center {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        /* Language Selector */
+        .language-selector {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lang-toggle {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 25px;
+            padding: 8px 15px;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lang-toggle:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .lang-flag {
+            width: 20px;
+            height: 15px;
+            border-radius: 3px;
+            display: inline-block;
+        }
+
+        .flag-es {
+            background: linear-gradient(to bottom, #c60b1e 0%, #c60b1e 33%, #ffc400 33%, #ffc400 66%, #c60b1e 66%);
+        }
+
+        .flag-en {
+            background: linear-gradient(to bottom, 
+                #b22234 0%, #b22234 7.69%, 
+                white 7.69%, white 15.38%, 
+                #b22234 15.38%, #b22234 23.08%, 
+                white 23.08%, white 30.77%, 
+                #b22234 30.77%, #b22234 38.46%, 
+                white 38.46%, white 46.15%, 
+                #b22234 46.15%, #b22234 53.85%,
+                white 53.85%, white 61.54%,
+                #b22234 61.54%, #b22234 69.23%,
+                white 69.23%, white 76.92%,
+                #b22234 76.92%, #b22234 84.62%,
+                white 84.62%, white 92.31%,
+                #b22234 92.31%, #b22234 100%);
+            position: relative;
+        }
+        
+        .flag-en::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40%;
+            height: 53.85%;
+            background: #3c3b6e;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f0f0" width="1200" height="600"/><rect fill="%23ddd" x="100" y="100" width="300" height="200" rx="10"/><rect fill="%23bbb" x="450" y="150" width="250" height="150" rx="8"/><rect fill="%23aaa" x="750" y="80" width="350" height="250" rx="12"/><circle fill="%23e74c3c" cx="950" cy="450" r="40"/><polygon fill="%233498db" points="200,450 300,400 400,450 400,500 200,500"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
+            transition: left 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            left: 0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .stat h3 {
+            font-size: 2rem;
+            color: #e74c3c;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover; /* ¡Ajuste para que la imagen llene el contenedor! */
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        /* Gallery Images Fix */
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: #f0f0f0;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.8));
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #f39c12;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #f39c12;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 2rem;
+            margin: 0 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.9);
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        /* Social Icons */
+        .social-icons a {
+            color: white;
+            font-size: 2rem;
+            margin: 0 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-center {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Modal de la Galería */
+        .modal {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s ease-in-out;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .modal-close:hover,
+        .modal-close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#inicio" class="logo-text">EGS Renovations</a>
+            <div class="nav-center">
+                <ul>
+                    <li><a href="#inicio" data-es="Inicio" data-en="Home">Inicio</a></li>
+                    <li><a href="#servicios" data-es="Servicios" data-en="Services">Servicios</a></li>
+                    <li><a href="#nosotros" data-es="Nosotros" data-en="About Us">Nosotros</a></li>
+                    <li><a href="#galeria" data-es="Galería" data-en="Gallery">Galería</a></li>
+                    <li><a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a></li>
+                </ul>
+                <div class="language-selector">
+                    <div class="lang-toggle" onclick="toggleLanguage()">
+                        <span class="lang-flag flag-es" id="current-flag"></span>
+                        <span id="current-lang">ES</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 data-es="Transformamos tu Hogar" data-en="We Transform Your Home">Transformamos tu Hogar</h1>
+                <p data-es="Especialistas en remodelaciones de alta calidad con más de 10 años de experiencia. Convertimos tus ideas en realidad." data-en="High-quality remodeling specialists with over 10 years of experience. We turn your ideas into reality.">Especialistas en remodelaciones de alta calidad con más de 10 años de experiencia. Convertimos tus ideas en realidad.</p>
+                <a href="#contacto" class="cta-button" data-es="Solicita tu Cotización" data-en="Request Your Quote">Solicita tu Cotización</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="services">
+        <div class="container">
+            <h2 class="section-title" data-es="Nuestros Servicios" data-en="Our Services">Nuestros Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <h3 data-es="Remodelación Integral" data-en="Complete Remodeling">Remodelación Integral</h3>
+                    <p data-es="Transformación completa de espacios residenciales y comerciales con diseño personalizado y materiales de primera calidad." data-en="Complete transformation of residential and commercial spaces with custom design and top-quality materials.">Transformación completa de espacios residenciales y comerciales con diseño personalizado y materiales de primera calidad.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚿</div>
+                    <h3 data-es="Remodelación de Baños" data-en="Bathroom Remodeling">Remodelación de Baños</h3>
+                    <p data-es="Renovación completa de baños con instalaciones modernas, azulejos de calidad y sistema de acrílico totalmente a prueba de agua con acabados elegantes." data-en="Complete bathroom renovation with modern installations, quality tiles and fully waterproof acrylic system with elegant finishes.">Renovación completa de baños con instalaciones modernas, azulejos de calidad y sistema de acrílico totalmente a prueba de agua con acabados elegantes.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🍳</div>
+                    <h3 data-es="Remodelación de Cocinas" data-en="Kitchen Remodeling">Remodelación de Cocinas</h3>
+                    <p data-es="Diseño y construcción de cocinas funcionales y modernas con gabinetes personalizados, instalaciones de primera calidad y acabados profesionales que maximizan el espacio y la funcionalidad." data-en="Design and construction of functional, modern kitchens with custom cabinets, top-quality installations and professional finishes that maximize space and functionality.">Diseño y construcción de cocinas funcionales y modernas con gabinetes personalizados, instalaciones de primera calidad y acabados profesionales que maximizan el espacio y la funcionalidad.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3 data-es="Pintura y Acabados" data-en="Painting & Finishes">Pintura y Acabados</h3>
+                    <p data-es="Servicios de pintura interior y exterior con técnicas especializadas y materiales de alta durabilidad." data-en="Interior and exterior painting services with specialized techniques and high-durability materials.">Servicios de pintura interior y exterior con técnicas especializadas y materiales de alta durabilidad.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3 data-es="Plomería y Electricidad" data-en="Plumbing & Electrical">Plomería y Electricidad</h3>
+                    <p data-es="Instalación y reparación de sistemas eléctricos y de plomería con técnicas especializadas, materiales de alta durabilidad y cumplimiento de códigos de construcción locales." data-en="Installation and repair of electrical and plumbing systems with specialized techniques, high-durability materials and compliance with local building codes.">Instalación y reparación de sistemas eléctricos y de plomería con técnicas especializadas, materiales de alta durabilidad y cumplimiento de códigos de construcción locales.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏡</div>
+                    <h3 data-es="Adiciones y ADU" data-en="Additions & ADU">Adiciones y ADU</h3>
+                    <p data-es="Construcción de unidades de vivienda accesoria (ADU), efficiency apartments y adiciones tanto adosadas como separadas de la vivienda principal para maximizar el potencial de su propiedad." data-en="Construction of accessory dwelling units (ADU), efficiency apartments and additions both attached and detached from the main residence to maximize your property's potential.">Construcción de unidades de vivienda accesoria (ADU), efficiency apartments y adiciones tanto adosadas como separadas de la vivienda principal para maximizar el potencial de su propiedad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="nosotros" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 data-es="Sobre Nosotros" data-en="About Us">Sobre Nosotros</h2>
+                    <p data-es="Con más de una década de experiencia en el sector de la construcción y remodelación, somos una empresa comprometida con la excelencia y la satisfacción del cliente." data-en="With over a decade of experience in construction and remodeling, we are a company committed to excellence and customer satisfaction.">Con más de una década de experiencia en el sector de la construcción y remodelación, somos una empresa comprometida con la excelencia y la satisfacción del cliente.</p>
+                    <p data-es="Nuestro equipo de profesionales altamente capacitados utiliza las mejores técnicas y materiales del mercado para garantizar resultados excepcionales en cada proyecto." data-en="Our team of highly trained professionals uses the best techniques and materials in the market to guarantee exceptional results in every project.">Nuestro equipo de profesionales altamente capacitados utiliza las mejores técnicas y materiales del mercado para garantizar resultados excepcionales en cada proyecto.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <h3>100+</h3>
+                            <p data-es="Proyectos Completados" data-en="Completed Projects">Proyectos Completados</p>
+                        </div>
+                        <div class="stat">
+                            <h3>10+</h3>
+                            <p data-es="Años de Experiencia" data-en="Years of Experience">Años de Experiencia</p>
+                        </div>
+                        <div class="stat">
+                            <h3>98%</h3>
+                            <p data-es="Clientes Satisfechos" data-en="Satisfied Customers">Clientes Satisfechos</p>
+                        </div>
+                        <div class="stat">
+                            <h3>24/7</h3>
+                            <p data-es="Atención al Cliente" data-en="Customer Support">Atención al Cliente</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://i.imgur.com/tqUENmJ.jpeg" alt="Equipo de EGS Renovations trabajando en una remodelación" class="about-logo-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="galeria" class="gallery">
+        <div class="container">
+            <h2 class="section-title" style="color: black;" data-es="Galería de Proyectos" data-en="Project Gallery">Galería de Proyectos</h2>
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Las imágenes se cargarán aquí dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;" data-es="Contáctanos" data-en="Contact Us">Contáctanos</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3 data-es="Información de Contacto" data-en="Contact Information">Información de Contacto</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>+(954)668-9089</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>info@egsrenovations.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>1804 Elise Marie Dr, Seffner, Florida</p>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name" data-es="Nombre Completo" data-en="Full Name">Nombre Completo</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-es="Correo Electrónico" data-en="Email Address">Correo Electrónico</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" data-es="Número de Teléfono" data-en="Phone Number">Número de Teléfono</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" data-es="Tu Mensaje" data-en="Your Message">Tu Mensaje</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" data-es="Enviar Mensaje" data-en="Send Message">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p data-es="&copy; 2024 EGS Renovations. Todos los derechos reservados." data-en="&copy; 2024 EGS Renovations. All rights reserved.">&copy; 2024 EGS Renovations. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modal para la Galería -->
+    <div id="gallery-modal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modal-image" alt="Imagen en grande">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let currentLang = localStorage.getItem('lang') || 'es';
+            const langElements = document.querySelectorAll('[data-es], [data-en]');
+            const currentLangDisplay = document.getElementById('current-lang');
+            const currentFlag = document.getElementById('current-flag');
+            
+            function updateLanguage() {
+                langElements.forEach(el => {
+                    const esText = el.getAttribute('data-es');
+                    const enText = el.getAttribute('data-en');
+                    if (currentLang === 'es') {
+                        el.textContent = esText;
+                    } else {
+                        el.textContent = enText;
+                    }
+                });
+                if (currentLang === 'es') {
+                    currentLangDisplay.textContent = 'ES';
+                    currentFlag.className = 'lang-flag flag-es';
+                } else {
+                    currentLangDisplay.textContent = 'EN';
+                    currentFlag.className = 'lang-flag flag-en';
+                }
+                
+                // Actualizar los títulos de las imágenes cuando el idioma cambia
+                const galleryItems = document.querySelectorAll('.gallery-item');
+                galleryItems.forEach(item => {
+                    const titleElement = item.querySelector('h3');
+                    const itemData = JSON.parse(item.dataset.info);
+                    titleElement.textContent = itemData.title[currentLang];
+                });
+            }
+
+            window.toggleLanguage = function() {
+                currentLang = currentLang === 'es' ? 'en' : 'es';
+                localStorage.setItem('lang', currentLang);
+                updateLanguage();
+            };
+
+            const galleryImages = [
+                // TODO: Reemplaza las siguientes URLs de ejemplo con las URL directas de tus imágenes de Imgur.
+                // Asegúrate de que los títulos coincidan con tus proyectos.
+                // Ejemplo: { url: 'https://i.imgur.com/tu-imagen-aqui.jpg', title: { es: 'Mi Proyecto Increíble', en: 'My Awesome Project' } },
+                { url: 'https://i.imgur.com/OncaIVF.jpeg', title: { es: 'Baño Moderno', en: 'Modern Bathroom' } },
+                { url: 'https://i.imgur.com/Bo3asCP.jpeg', title: { es: 'Remodelacion completa de Cuarto Principal', en: 'Master Bedroom entire remodelation' } },
+                { url: 'https://i.imgur.com/0NKGmwu.jpeg', title: { es: 'Ducha con paneles de compuesto estilo marmol', en: 'Shower with Compossite walls(Luxury Finish)' } },
+                { url: 'https://i.imgur.com/QGexs6x.jpeg', title: { es: 'Ducha de Lujo', en: 'Luxury Shower' } },
+                { url: 'https://i.imgur.com/KuQlBgP.jpeg', title: { es: 'Ducha hermosa con puerta pivotante', en: 'Beautiful Shower with Pivot Glass Door' } },
+                { url: 'https://i.imgur.com/JlNG9KI.jpeg', title: { es: 'Ducha Acrilico estilo subway', en: 'Shower with Subway style Acrylic Walls' } },
+                { url: 'https://i.imgur.com/vabPQDZ.jpeg', title: { es: 'Instalacion de baldosas en exterior', en: 'Exterior Tile Work' } },
+                { url: 'https://i.imgur.com/B1FbYhQ.jpeg', title: { es: 'Electricidad Exterior', en: 'Outdoor Electrical Installation' } },
+                { url: 'https://i.imgur.com/s7gYMY5.jpeg', title: { es: 'Instalacion de Pisos', en: 'Flooring' } }
+            ];
+
+            const galleryGrid = document.getElementById('gallery-grid');
+            
+            galleryImages.forEach(image => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.dataset.fullUrl = image.url; 
+                galleryItem.dataset.info = JSON.stringify(image);
+
+                const img = document.createElement('img');
+                img.src = image.url; 
+                img.alt = image.title[currentLang];
+                img.loading = 'lazy';
+                
+                const overlay = document.createElement('div');
+                overlay.className = 'gallery-overlay';
+                const title = document.createElement('h3');
+                title.textContent = image.title[currentLang];
+                overlay.appendChild(title);
+                
+                galleryItem.appendChild(img);
+                galleryItem.appendChild(overlay);
+                galleryGrid.appendChild(galleryItem);
+                
+                // Agrega el evento de clic al elemento de la galería
+                galleryItem.addEventListener('click', () => {
+                    const modal = document.getElementById('gallery-modal');
+                    const modalImage = document.getElementById('modal-image');
+                    modal.style.display = 'flex';
+                    modalImage.src = galleryItem.dataset.fullUrl;
+                });
+            });
+
+            updateLanguage();
+
+            // Lógica del modal de la galería
+            const modal = document.getElementById('gallery-modal');
+            const modalCloseButton = document.querySelector('.modal-close');
+
+            // Cierra el modal al hacer clic en el botón de cierre
+            modalCloseButton.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+            
+            // Cierra el modal al hacer clic fuera de la imagen (en el fondo)
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
